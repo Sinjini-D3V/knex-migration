@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "knex": "^3.1.0",
+    "pg": "^8.13.1"
+  },
+  "name": "knex-migration",
+  "version": "1.0.0",
+  "main": "knexfile.js",
+  "scripts": {
+    "start": "node server.js",
+    "knex": "knex"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
