@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_DB: my_db
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  knex:
+    image: node:latest
+    container_name: knex_container
+    working_dir: /app
+    volumes:
+      - ./knex:/app
+    command: ["npm", "run", "start"]
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: admin
+      DB_NAME: my_db
+
+volumes:
+  postgres_data:
